@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { renderRoutes } from 'react-router-config';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
@@ -59,7 +58,7 @@ Root.propTypes = {
   // JSS props
   classes: PropTypes.object.isRequired,
   // react router dom props
-  route: ReactRouterPropTypes.route.isRequired
+  route: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Root)
