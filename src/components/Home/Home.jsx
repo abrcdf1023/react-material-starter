@@ -7,6 +7,8 @@ const Home = ({ fetchGetUsers, usersFetchGet, users }) => {
     });
   }, []);
 
+  if (usersFetchGet.get('isLoading')) return <div>loading...</div>;
+
   return (
     <ul>
       {users.map(user => (
