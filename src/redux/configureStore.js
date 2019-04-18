@@ -3,7 +3,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import { routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
 
-import * as apis from 'api';
+import * as apis from 'apis';
 
 import { rootEpic, createRootReducer } from './modules/root';
 
