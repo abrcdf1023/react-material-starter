@@ -12,7 +12,7 @@ export const epicMiddleware = createEpicMiddleware({
   dependencies: { apis }
 });
 export const history = createBrowserHistory({
-  basename: process.env.REACT_APP_ROUTER_BASENAME
+  basename: '/'
 });
 const middlewares = [epicMiddleware, routerMiddleware(history)];
 

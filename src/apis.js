@@ -2,7 +2,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 const fetcher = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: 'https://reqres.in/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json;charset=UTF-8'

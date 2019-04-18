@@ -10,6 +10,7 @@
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.4.0",
+    "immutable": "^4.0.0-rc.12",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
