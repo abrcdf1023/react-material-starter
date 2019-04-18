@@ -1,11 +1,21 @@
-import React from 'react'
+import React from 'react';
 
-const Page2 = () => {
+const Page2 = ({
+  handleAlertDialogOpen,
+  setAlertDialogTitle,
+  setAlertDialogMessage
+}) => {
+  const handleClick = () => {
+    setAlertDialogTitle('Page2');
+    setAlertDialogMessage('Page2 Message');
+    handleAlertDialogOpen();
+  };
+
   return (
     <div>
-      Page2
+      <button onClick={handleClick}>show alert dialog</button>
     </div>
-  )
-}
+  );
+};
 
-export default Page2
+export default Page2;

@@ -3,6 +3,7 @@ import { renderRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import Theme from '@e-group/react-material-components/dist/Theme';
+import AlertDialog from 'redux/modules/components/AlertDialog';
 
 import { store, history } from 'redux/configureStore';
 import theme from './theme';
@@ -13,7 +14,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Theme theme={theme}>{renderRoutes(routes)}</Theme>
+          <Theme theme={theme}>
+            <AlertDialog />
+            {renderRoutes(routes)}
+          </Theme>
         </ConnectedRouter>
       </Provider>
     );
