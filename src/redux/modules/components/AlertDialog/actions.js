@@ -1,8 +1,8 @@
-import actionCreators from 'redux/modules/actionCreators';
+import actionCreator from 'redux/modules/actionCreator';
 
 export const {
   handleOpen,
   handleClose,
   setTitle,
   setMessage
-} = actionCreators.components.alertDialog;
+} = actionCreator.components.alertDialog;
