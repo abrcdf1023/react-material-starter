@@ -910,10 +910,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
   integrity sha512-6It2EVfGskxZCQhuykrfnALg7oVeiI6KclWSmGDqB0AiInVrTGB9Jp9i4/Ad21u9Jde/voVQz6eFX/eSg/UsPA==
 
-"@e-group/devops@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@e-group/devops/-/devops-6.0.2.tgz#3e9e866c39090456f5bbf9cba71bf9bf2f1652d2"
-  integrity sha512-QgVHDREF26K2eSwy4fF1+Clc42y+jyNs9v7U9Qx/pIffKzMSoYbKHjfF/W2uMOh+HHhg4rPodWTRmj73bFZD6Q==
+"@e-group/devops@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@e-group/devops/-/devops-6.0.5.tgz#93c5d0b8936260b3b1663984446b13b44def2095"
+  integrity sha512-qA3t1spDOdPQleErLgznTNLHjr1dBwdgEzK9GhFYtC9nGYWNK6H8lbbneH995Db4NWmIs2o+KvxLbYPsHcSDAg==
   dependencies:
     gulp "^4.0.0"
     gulp-bom "^2.0.0"
