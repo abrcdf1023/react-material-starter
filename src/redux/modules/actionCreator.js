@@ -4,6 +4,9 @@ import { createActions } from 'redux-actions';
  * We use actionMap to create all actions in this file.
  */
 const actionMap = {
+  ENTITIES: {
+    SET_ENTITIES: undefined
+  },
   COMPONENTS: {
     ALERT_DIALOG: {
       HANDLE_OPEN: undefined,

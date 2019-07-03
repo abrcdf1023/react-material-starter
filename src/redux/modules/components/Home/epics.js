@@ -1,6 +1,8 @@
 import { combineEpics } from 'redux-observable';
-import { of, concat } from 'rxjs';
 import { fromJS } from 'immutable';
+import { of, concat } from 'rxjs';
+import { normalize } from 'normalizr';
+import { setEntities } from 'redux/modules/entities/actions';
 import {
   fetchGetUsersRequest,
   fetchGetUsersSuccess,
@@ -15,11 +17,20 @@ export const fetchGetUsersEpic = makeBasicFetchEpic({
   actionType: FETCH_GET_USERS,
   apiName: 'fetchGetUsers',
   fetchRequest: fetchGetUsersRequest,
-  handleSuccess: response => {
-    if (response.status === 204) {
-      return [fetchGetUsersSuccess()];
-    }
-    return [fetchGetUsersSuccess(fromJS(response.data))];
+  handleSuccess: (response, { schema }) => {
+    const { result, entities } = normalize(
+      response.data.data || [],
+      schema.users
+    );
+    return [
+      setEntities(fromJS(entities)),
+      fetchGetUsersSuccess(
+        fromJS({
+          result,
+          total: response.data.total
+        })
+      )
+    ];
   },
   handleFailure: (error, { state$, action }) =>
     concat(

@@ -1,28 +1,25 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import { routerMiddleware } from 'connected-react-router/immutable';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router/immutable';
+import { createRootReducer, rootEpic } from 'redux/modules/root';
 
 import * as apis from 'apis';
-
-import { rootEpic, createRootReducer } from './modules/root';
+import * as schema from 'schema';
 
 // create middlewares
 export const epicMiddleware = createEpicMiddleware({
-  dependencies: { apis }
+  dependencies: { apis, schema }
 });
 export const history = createBrowserHistory({
-  basename: '/'
+  basename: process.env.REACT_APP_ROUTER_BASENAME
 });
 const middlewares = [epicMiddleware, routerMiddleware(history)];
 
-// chrome develop extension
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-// create store
 export const store = createStore(
   createRootReducer(history),
-  composeEnhancers(applyMiddleware(...middlewares))
+  composeWithDevTools(applyMiddleware(...middlewares))
 );
 
 // run after create store
