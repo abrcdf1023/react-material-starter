@@ -5,7 +5,7 @@ const Home = ({ fetchGetUsers, usersFetchGet, users }) => {
     fetchGetUsers({
       page: 2
     });
-  }, []);
+  }, [fetchGetUsers]);
 
   if (usersFetchGet.get('isLoading')) return <div>loading...</div>;
 

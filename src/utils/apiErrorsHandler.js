@@ -5,8 +5,16 @@ import {
   setTitle,
   setMessage
 } from 'redux/modules/components/AlertDialog/actions';
+import { fetchPostLogs } from 'apis';
 
-export default function apiErrorsHandler(state$, error) {
+export default function apiErrorsHandler(error, { state$, action }) {
+  let payload = {
+    function: JSON.stringify(action),
+    browserDescription: window.navigator.userAgent,
+    jsonData: JSON.stringify(state$.value.toJS()),
+    level: 'ERROR'
+  };
+
   if (error.response && error.response.status) {
     switch (error.response.status) {
       case 401: {
@@ -17,6 +25,8 @@ export default function apiErrorsHandler(state$, error) {
         );
       }
       case 403: {
+        document.cookie =
+          'lid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         return concat(
           of(replace('/login')),
           of(setTitle('登入逾時')),
@@ -25,13 +35,19 @@ export default function apiErrorsHandler(state$, error) {
         );
       }
       default:
-        return concat(
-          of(setTitle('未知的錯誤')),
-          of(setMessage('未知的錯誤，若繼續發生請嘗試重新登入或聯絡我們。')),
-          of(handleAlertDialogOpen())
-        );
+        payload = {
+          ...payload,
+          message: error.response.statusText
+        };
+        fetchPostLogs(payload);
+        return of();
     }
   }
   // 例外處理非 api 錯誤
+  payload = {
+    ...payload,
+    message: error.message
+  };
+  fetchPostLogs(payload);
   return of();
 }

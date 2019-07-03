@@ -1,4 +1,5 @@
 import { combineEpics } from 'redux-observable';
+import { of, concat } from 'rxjs';
 import { fromJS } from 'immutable';
 import {
   fetchGetUsersRequest,
@@ -7,7 +8,8 @@ import {
 } from './actions';
 import { FETCH_GET_USERS } from './types';
 
-import makeBasicFetchEpic from 'utils/makeBasicFetchEpic';
+import makeBasicFetchEpic from '@e-group/utils/makeBasicFetchEpic';
+import apiErrorsHandler from 'utils/apiErrorsHandler';
 
 export const fetchGetUsersEpic = makeBasicFetchEpic({
   actionType: FETCH_GET_USERS,
@@ -19,7 +21,11 @@ export const fetchGetUsersEpic = makeBasicFetchEpic({
     }
     return [fetchGetUsersSuccess(fromJS(response.data))];
   },
-  fetchFailure: fetchGetUsersFailure
+  handleFailure: (error, { state$, action }) =>
+    concat(
+      apiErrorsHandler(error, { state$, action }),
+      of(fetchGetUsersFailure(error))
+    )
 });
 
 export default combineEpics(fetchGetUsersEpic);

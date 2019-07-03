@@ -1,4 +1,4 @@
-import createFetchReducer from '@e-group/frontend-utils/es/createFetchReducer';
+import createFetchReducer from '@e-group/utils/createFetchReducer';
 import {
   FETCH_GET_USERS,
   FETCH_GET_USERS_REQUEST,
