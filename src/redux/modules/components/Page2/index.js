@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {
@@ -8,15 +7,11 @@ import {
 } from 'redux/modules/components/AlertDialog/actions';
 import Page2 from 'components/Page2';
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      handleAlertDialogOpen,
-      setAlertDialogTitle,
-      setAlertDialogMessage
-    },
-    dispatch
-  );
+const mapDispatchToProps = {
+  handleAlertDialogOpen,
+  setAlertDialogTitle,
+  setAlertDialogMessage
+};
 
 export default connect(
   null,

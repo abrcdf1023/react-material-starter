@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getUsersFetchGet, getUsers } from './selectors';
@@ -12,7 +11,7 @@ const mapStateToProps = state => ({
   users: getUsers(state)
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+const mapDispatchToProps = actions;
 
 export default connect(
   mapStateToProps,
